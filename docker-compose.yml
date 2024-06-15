@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  # Spring Boot Application Service
+  spring-boot-app:
+    image: my_employee_backend
+    build:
+      context: ./MyEmployeeBackend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/employee_dir
+      SPRING_DATASOURCE_USERNAME: springstudent
+      SPRING_DATASOURCE_PASSWORD: springstudent
+
+  # React Application Service
+  react-app:
+    image: my_employee_frontend
+    build:
+      context: ./MyEmployeeFrontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
